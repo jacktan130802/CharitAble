@@ -13,7 +13,9 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import handler.InvalidUserException;
+import handler.Toast;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 import model.Model;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -349,9 +351,13 @@ public class NeedGiveController implements Initializable  {
 
 			//One or more input fields is invalid
 		} else {
-			a.setAlertType(AlertType.ERROR);
-			a.setHeaderText("Invalid Donation");
-			a.setContentText("One of your input fields is invalid. Use the buttons next to the input fields to determine validity.");
+//			a.setAlertType(AlertType.ERROR);
+//			a.setHeaderText("Invalid Donation");
+//			a.setContentText("One of your input fields is invalid. Use the buttons next to the input fields to determine validity.");
+
+//			Toast toast;
+//			toast.makeText((Stage)window.getScene().getWindow()), "Please input your fields!", 500, 100, 100));
+
 		}
 
 		//show alert after all conditions

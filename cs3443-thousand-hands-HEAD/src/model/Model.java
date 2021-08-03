@@ -25,7 +25,7 @@ import javafx.collections.ObservableList;
  ********************************************************************
  */
 
-public class Model {
+public class Model {//for methods of altering the inventory.
 	
 	//Instantiations of all classes used in data structure for the app
 		public static boolean need = true;
@@ -35,7 +35,94 @@ public class Model {
 	    public static Properties userProp = new Properties();
 	    public static File file = new File("data.properties");
 	    public static File userFile = new File("users.properties");
-		public static ObservableList<String> obsInventory = FXCollections.observableArrayList();
+
+	public static boolean isNeed() {
+		return need;
+	}
+
+	public static HashMap<String, String> getHash() {
+		return hash;
+	}
+
+	public static HashMap<String, String> getUsers() {
+		return users;
+	}
+
+	public static Properties getProp() {
+		return prop;
+	}
+
+	public static Properties getUserProp() {
+		return userProp;
+	}
+
+	public static File getFile() {
+		return file;
+	}
+
+	public static File getUserFile() {
+		return userFile;
+	}
+
+	public static ObservableList<String> getObsInventory() {
+		return obsInventory;
+	}
+
+
+	public static void setNeed(boolean need) {
+		Model.need = need;
+	}
+
+	public static void setHash(HashMap<String, String> hash) {
+		Model.hash = hash;
+	}
+
+	public static void setUsers(HashMap<String, String> users) {
+		Model.users = users;
+	}
+
+	public static void setProp(Properties prop) {
+		Model.prop = prop;
+	}
+
+	public static void setUserProp(Properties userProp) {
+		Model.userProp = userProp;
+	}
+
+	public static void setFile(File file) {
+		Model.file = file;
+	}
+
+	public static void setUserFile(File userFile) {
+		Model.userFile = userFile;
+	}
+
+	public static void setObsInventory(ObservableList<String> obsInventory) {
+		Model.obsInventory = obsInventory;
+	}
+
+
+
+
+	//getter and setters
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static ObservableList<String> obsInventory = FXCollections.observableArrayList();
 		
 		/*************************************************************************************
 		 * 				addItem()
@@ -90,6 +177,7 @@ public class Model {
 		 *	
 		 *************************************************************************************
 		 */
+
 		public static int getNumberOfItemsInInventory(String data) {
 			if (hash.size() > 0) {
 		    	for (Entry<String, String> entry: hash.entrySet()) {
@@ -194,6 +282,7 @@ public class Model {
 		 *  the string is in the form abc123
 		 *********************************************
 		 */
+
 		public static boolean verifyUser(String text) {
 			
 			boolean valid = true;
@@ -230,6 +319,7 @@ public class Model {
 		 *	string cannot be parsed to an int
 		 *********************************************
 		 */
+
 		public static boolean verifyInt(String text) {
 			
 			//empty
@@ -284,6 +374,7 @@ public class Model {
 		 *  launch (called in main)
 		 *********************************************
 		 */
+
 		public static void loadFiles() throws IOException{
 			
 			//loads the file from application directory
@@ -304,17 +395,9 @@ public class Model {
 	        }
 		}
 		
-		
-		//development method, used to create an initial inventory for the user
-		public static void initInventory() throws IOException {
-			hash.put("Toilet Paper", "10");
-			hash.put("Hand Sanitizer", "12");
-			hash.put("Shampoo", "10");
-			prop.putAll(hash);
-			FileOutputStream writer = new FileOutputStream(file,true);
-	        prop.store(writer,null);
+
 	        
 			
 		}
 
-}
+

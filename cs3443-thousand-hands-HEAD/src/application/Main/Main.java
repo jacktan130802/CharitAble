@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
-import model.Model;
+import model.*;
 
 
 public class Main extends Application {
@@ -25,7 +25,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 
 		try {
-			//Model.initInventory(); //(uncomment to initialize inventory if none exists)
+			//Model.initInventory(); //(uncomment to initialize inventory if none exists) change more
 			Stage window = primaryStage;
 			window.setTitle("p1920709 Jack Tan Xin Jie");
 			window.setResizable(false);
