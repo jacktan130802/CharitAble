@@ -16,6 +16,7 @@ import handler.InvalidUserException;
 import handler.Toast;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import model.Inventory;
 import model.Model;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -308,7 +309,7 @@ public class NeedGiveController implements Initializable  {
 
 				//subtractItem() will return -1 if item is not found, 0 if item is found but user has requested too much
 				//Otherwise, it returns the difference after making the withdrawal
-				int difference = Model.subtractItem(item, amount);
+				int difference = Inventory.subtractItem(item, amount);
 				if (difference > 0) {
 					//clears input fields
 					userField.clear();
@@ -336,7 +337,7 @@ public class NeedGiveController implements Initializable  {
 			} else {
 
 				//Model.additem() returns true if the item is found in inventory in order to change alerts
-				if (Model.addItem(item, amount)) {
+				if (Inventory.addItem(item, amount)) {
 					a.setContentText("You have added " + item + " (x" + amount + ") to existing inventory.\nThank you " + user + "!");
 				} else {
 					a.setContentText("You have donated " + item + " (x" + amount + ")\nThank you " + user + "!");
@@ -372,12 +373,12 @@ public class NeedGiveController implements Initializable  {
 		ArrayList<String> datas = new ArrayList<String>();
 
 		try {
-			Model.loadFiles();
+			Inventory.loadFiles();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		String data = "";
-		for (Map.Entry<String, String> entry : Model.hash.entrySet()) {
+		for (Map.Entry<String, String> entry : Inventory.hash.entrySet()) {
 			data = entry.getKey();
 			System.out.println(data);
 			datas.add(data);

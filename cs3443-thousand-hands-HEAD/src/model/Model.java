@@ -40,201 +40,201 @@ public class Model {//for methods of altering the inventory.
 		return need;
 	}
 
-	public static HashMap<String, String> getHash() {
-		return hash;
-	}
-
-	public static HashMap<String, String> getUsers() {
-		return users;
-	}
-
-	public static Properties getProp() {
-		return prop;
-	}
-
-	public static Properties getUserProp() {
-		return userProp;
-	}
-
-	public static File getFile() {
-		return file;
-	}
-
-	public static File getUserFile() {
-		return userFile;
-	}
-
-	public static ObservableList<String> getObsInventory() {
-		return obsInventory;
-	}
-
-
-	public static void setNeed(boolean need) {
-		Model.need = need;
-	}
-
-	public static void setHash(HashMap<String, String> hash) {
-		Model.hash = hash;
-	}
-
-	public static void setUsers(HashMap<String, String> users) {
-		Model.users = users;
-	}
-
-	public static void setProp(Properties prop) {
-		Model.prop = prop;
-	}
-
-	public static void setUserProp(Properties userProp) {
-		Model.userProp = userProp;
-	}
-
-	public static void setFile(File file) {
-		Model.file = file;
-	}
-
-	public static void setUserFile(File userFile) {
-		Model.userFile = userFile;
-	}
-
-	public static void setObsInventory(ObservableList<String> obsInventory) {
-		Model.obsInventory = obsInventory;
-	}
+//	public static HashMap<String, String> getHash() {
+//		return hash;
+//	}
+//
+//	public static HashMap<String, String> getUsers() {
+//		return users;
+//	}
+//
+//	public static Properties getProp() {
+//		return prop;
+//	}
+//
+//	public static Properties getUserProp() {
+//		return userProp;
+//	}
+//
+//	public static File getFile() {
+//		return file;
+//	}
+//
+//	public static File getUserFile() {
+//		return userFile;
+//	}
+//
+//	public static ObservableList<String> getObsInventory() {
+//		return obsInventory;
+//	}
+//
+//
+//	public static void setNeed(boolean need) {
+//		Model.need = need;
+//	}
+//
+//	public static void setHash(HashMap<String, String> hash) {
+//		Model.hash = hash;
+//	}
+//
+//	public static void setUsers(HashMap<String, String> users) {
+//		Model.users = users;
+//	}
+//
+//	public static void setProp(Properties prop) {
+//		Model.prop = prop;
+//	}
+//
+//	public static void setUserProp(Properties userProp) {
+//		Model.userProp = userProp;
+//	}
+//
+//	public static void setFile(File file) {
+//		Model.file = file;
+//	}
+//
+//	public static void setUserFile(File userFile) {
+//		Model.userFile = userFile;
+//	}
+//
+//	public static void setObsInventory(ObservableList<String> obsInventory) {
+//		Model.obsInventory = obsInventory;
+//	}
 
 
 
 
 	//getter and setters
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	public static ObservableList<String> obsInventory = FXCollections.observableArrayList();
-		
-		/*************************************************************************************
-		 * 				addItem()
-		 *************************************************************************************
-		 *
-		 *	Parameters:
-		 *		item: String
-		 *		amount: String
-		 *	Return Type: 
-		 *		boolean
-		 *
-		 *	Adds the selected item to inventory, handles new and existing items
-		 *	
-		 *************************************************************************************
-		 */
-		public static boolean addItem(String item, String amount) throws IOException {
-			
-			FileOutputStream writer = new FileOutputStream(file,true);
-			
-			//checks if item is already in inventory, then adds user's amount to current value
-			if (hash.containsKey(item)) {
-				int add = (int)Integer.parseInt(amount);
-				hash.replace(item, "" + (add + (int)Integer.parseInt(hash.get(item))));
-				prop.putAll(Model.hash);
-				prop.store(writer,null);
-				return true;
-				
-				
-			//otherwise creates a new entry
-			}else {
-				hash.put(item, amount);
-				prop.putAll(Model.hash);
-				prop.store(writer,null);
-				return false;
-				
-			}
-			
-		}
-		
-		/*************************************************************************************
-		 * 				getNumberOfItemsInInventory()
-		 *************************************************************************************
-		 *
-		 *	Parameters:
-		 *		data: String
-		 *		
-		 *	Return Type: 
-		 *		int
-		 *
-		 *	Determines number of items in inventory, will handle normal queries, not found errors
-		 *  
-		 *	
-		 *************************************************************************************
-		 */
-
-		public static int getNumberOfItemsInInventory(String data) {
-			if (hash.size() > 0) {
-		    	for (Entry<String, String> entry: hash.entrySet()) {
-		    		
-		    		if(entry.getKey().equals(data)) {
-			    		return Integer.parseInt(entry.getValue());
-			    		
-		    		}
-		    	}
-			}
-		    	
-		    	
-			return 0;
-		}
-		
-		/*************************************************************************************
-		 * 				subtractItem()
-		 *************************************************************************************
-		 *
-		 *	Parameters:
-		 *		item: String
-		 *		amount: String
-		 *	Return Type: 
-		 *		int
-		 *
-		 *	Removes the selected item to inventory if the item exists, handles item not found
-		 *  and not enough inventory issues. Returns the int value of the difference if a 
-		 *  proper subtraction was made.
-		 *	
-		 *************************************************************************************
-		 */
-		
-		public static int subtractItem(String item, String amount) throws IOException {
-			
-			FileOutputStream writer = new FileOutputStream(file,true);
-			if (hash.containsKey(item)) {
-				if ((int)Integer.parseInt(hash.get(item)) >= (int)Integer.parseInt(amount)) {
-					int difference = (int)Integer.parseInt(hash.get(item)) - (int)Integer.parseInt(amount);  //deduction from inventory
-					
-					//replaces the amount of the item with the difference after user received a donation
-					Model.hash.replace(item, "" + difference);
-					Model.prop.putAll(Model.hash);
-					Model.prop.store(writer,null);  //writes to file
-					writer.close();
-					return difference;
-				}else {
-					writer.close();
-					return 0;
-				}
-			}else {
-				writer.close();
-				return -1;
-			}
-			
-			
-		}
-		
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//	public static ObservableList<String> obsInventory = FXCollections.observableArrayList();
+//
+//		/*************************************************************************************
+//		 * 				addItem()
+//		 *************************************************************************************
+//		 *
+//		 *	Parameters:
+//		 *		item: String
+//		 *		amount: String
+//		 *	Return Type:
+//		 *		boolean
+//		 *
+//		 *	Adds the selected item to inventory, handles new and existing items
+//		 *
+//		 *************************************************************************************
+//		 */
+//		public static boolean addItem(String item, String amount) throws IOException {
+//
+//			FileOutputStream writer = new FileOutputStream(file,true);
+//
+//			//checks if item is already in inventory, then adds user's amount to current value
+//			if (hash.containsKey(item)) {
+//				int add = (int)Integer.parseInt(amount);
+//				hash.replace(item, "" + (add + (int)Integer.parseInt(hash.get(item))));
+//				prop.putAll(Model.hash);
+//				prop.store(writer,null);
+//				return true;
+//
+//
+//			//otherwise creates a new entry
+//			}else {
+//				hash.put(item, amount);
+//				prop.putAll(Model.hash);
+//				prop.store(writer,null);
+//				return false;
+//
+//			}
+//
+//		}
+//
+//		/*************************************************************************************
+//		 * 				getNumberOfItemsInInventory()
+//		 *************************************************************************************
+//		 *
+//		 *	Parameters:
+//		 *		data: String
+//		 *
+//		 *	Return Type:
+//		 *		int
+//		 *
+//		 *	Determines number of items in inventory, will handle normal queries, not found errors
+//		 *
+//		 *
+//		 *************************************************************************************
+//		 */
+//
+//		public static int getNumberOfItemsInInventory(String data) {
+//			if (hash.size() > 0) {
+//		    	for (Entry<String, String> entry: hash.entrySet()) {
+//
+//		    		if(entry.getKey().equals(data)) {
+//			    		return Integer.parseInt(entry.getValue());
+//
+//		    		}
+//		    	}
+//			}
+//
+//
+//			return 0;
+//		}
+//
+//		/*************************************************************************************
+//		 * 				subtractItem()
+//		 *************************************************************************************
+//		 *
+//		 *	Parameters:
+//		 *		item: String
+//		 *		amount: String
+//		 *	Return Type:
+//		 *		int
+//		 *
+//		 *	Removes the selected item to inventory if the item exists, handles item not found
+//		 *  and not enough inventory issues. Returns the int value of the difference if a
+//		 *  proper subtraction was made.
+//		 *
+//		 *************************************************************************************
+//		 */
+//
+//		public static int subtractItem(String item, String amount) throws IOException {
+//
+//			FileOutputStream writer = new FileOutputStream(file,true);
+//			if (hash.containsKey(item)) {
+//				if ((int)Integer.parseInt(hash.get(item)) >= (int)Integer.parseInt(amount)) {
+//					int difference = (int)Integer.parseInt(hash.get(item)) - (int)Integer.parseInt(amount);  //deduction from inventory
+//
+//					//replaces the amount of the item with the difference after user received a donation
+//					Model.hash.replace(item, "" + difference);
+//					Model.prop.putAll(Model.hash);
+//					Model.prop.store(writer,null);  //writes to file
+//					writer.close();
+//					return difference;
+//				}else {
+//					writer.close();
+//					return 0;
+//				}
+//			}else {
+//				writer.close();
+//				return -1;
+//			}
+//
+//
+//		}
+//
 		/*************************************************************************************
 		 * 				addUserName()
 		 *************************************************************************************
@@ -378,21 +378,21 @@ public class Model {//for methods of altering the inventory.
 		public static void loadFiles() throws IOException{
 			
 			//loads the file from application directory
-			FileInputStream reader=new FileInputStream(file);
-			FileInputStream userReader = new FileInputStream(userFile);
-			prop.load(reader);
-			userProp.load(userReader);
-			reader.close();
-			userReader.close();
-			
-			//iterates through the file and adds values to HashMap
-			for(Object key: prop.stringPropertyNames()){
-	        	hash.put(key.toString(), prop.get(key).toString());
-	        }
-			//iterates through the file and adds values to HashMap
-			for(Object key: userProp.stringPropertyNames()){
-	        	users.put(key.toString(), userProp.get(key).toString());
-	        }
+//			FileInputStream reader=new FileInputStream(file);
+//			FileInputStream userReader = new FileInputStream(userFile);
+//			prop.load(reader);
+//			userProp.load(userReader);
+//			reader.close();
+//			userReader.close();
+//
+//			//iterates through the file and adds values to HashMap
+//			for(Object key: prop.stringPropertyNames()){
+//	        	hash.put(key.toString(), prop.get(key).toString());
+//	        }
+//			//iterates through the file and adds values to HashMap
+//			for(Object key: userProp.stringPropertyNames()){
+//	        	users.put(key.toString(), userProp.get(key).toString());
+//	        }
 		}
 		
 

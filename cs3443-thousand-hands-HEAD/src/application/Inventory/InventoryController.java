@@ -17,6 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import model.Inventory;
 import model.Model;
 
 public class InventoryController {
@@ -107,18 +108,18 @@ public class InventoryController {
     	String data = "";
     	
     	//if there is inventory
-    	if (Model.hash.size() > 0) {
+    	if (Inventory.hash.size() > 0) {
     		InventoryController x = new InventoryController();
-	    	for (Entry<String, String> entry:  Model.hash.entrySet()) {
+	    	for (Entry<String, String> entry:  Inventory.hash.entrySet()) {
 	    		
 	    		//sets data string by concatenating strings from HashMap key and value
 	    		data = entry.getKey() + " (x" + entry.getValue() + ")";
 				System.out.println(data);
-	    		Model.obsInventory.add(data);	//adds string to the ObservableList
+	    		Inventory.obsInventory.add(data);	//adds string to the ObservableList
 	    	}
 	    	
 	    	//sets the ListView based on the ObservableList
-	    	inventoryList.setItems(Model.obsInventory);
+	    	inventoryList.setItems(Inventory.obsInventory);
 	    //empty inventory
     	}else {
     		Alert a = new Alert(AlertType.ERROR);
@@ -152,7 +153,7 @@ public class InventoryController {
     	
     	//manages lists
     	inventoryList.getItems().clear();
-    	Model.obsInventory.clear();
+    	Inventory.obsInventory.clear();
     	
     	//local declarations
     	Alert a = new Alert(AlertType.ERROR);
@@ -160,10 +161,10 @@ public class InventoryController {
     	String data = itemSearch.getText();
     	
     	//Checks if item is in inventory
-    	int amount = Model.getNumberOfItemsInInventory(data);
+    	int amount = Inventory.getNumberOfItemsInInventory(data);
     	if (amount > 0) {
     		data += " (x" + amount + ")";
-    		Model.obsInventory.add(data);
+    		Inventory.obsInventory.add(data);
     	}else {
     		a.setHeaderText("Item not found");
     		a.setContentText("Please search again");
@@ -172,7 +173,7 @@ public class InventoryController {
     	
     	
     	//sets InventoryList object to the data in the ObservableList object
-    	inventoryList.setItems(Model.obsInventory);
+    	inventoryList.setItems(Inventory.obsInventory);
     	
     }
 
