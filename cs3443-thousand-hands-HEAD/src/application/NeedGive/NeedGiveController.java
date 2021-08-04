@@ -287,7 +287,7 @@ public class NeedGiveController implements Initializable  {
 		//System.out.println(Models.hash);
 		//makes alert object
 		Alert a = new Alert(AlertType.CONFIRMATION);
-		FileOutputStream writer = new FileOutputStream(Model.file, true);
+		FileOutputStream writer = new FileOutputStream(Inventory.file, true);
 		a.setHeaderText("Donation Complete!");
 
 		//checks for valid input in all fields

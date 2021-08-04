@@ -36,6 +36,7 @@
                <font>
                   <Font size="25.0" />
                </font></Label>
+            <Label layoutX="304.0" layoutY="565.0" text="Note: Double Icon Click to refresh" textFill="#dd1e1e" />
          </children>
       </AnchorPane>
    </children>

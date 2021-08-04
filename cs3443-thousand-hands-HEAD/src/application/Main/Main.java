@@ -30,6 +30,7 @@ public class Main extends Application {
 			window.setTitle("p1920709 Jack Tan Xin Jie");
 			window.setResizable(false);
 			Inventory.loadFiles();    //loads the saved data.properties file
+			Model.loadFiles();        //loads the user.properties file
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main.fxml"));
 			Scene scene = new Scene(root,600,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

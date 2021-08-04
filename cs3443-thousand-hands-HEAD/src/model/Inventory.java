@@ -14,7 +14,7 @@ import java.util.Properties;
 public class Inventory {
     private static int quantity;
     private static String invitem;
-    
+
     public static HashMap<String, String> hash = new HashMap<String, String>(); //this is my 2 data for OOP
 
     //    public static HashMap<String, String> users = new HashMap<String, String>();
@@ -24,7 +24,7 @@ public class Inventory {
 
     public static File file = new File("data.properties");
 
-//    public static File userFile = new File("users.properties");
+    //    public static File userFile = new File("users.properties");
 
 
     //    public static File file = new File("data.properties");
@@ -156,9 +156,9 @@ public class Inventory {
         reader.close();
 
 
-        //iterates through the file and adds values to HashMap
+        //iterates through the file and adds values to HashMap  -- Throw into hashmap!
         for (Object key : prop.stringPropertyNames()) {
-            hash.put(key.toString(), prop.get(key).toString());
+            hash.put(key.toString(), prop.get(key).toString());//converting evrything to string.
         }
 
 
