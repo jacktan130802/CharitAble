@@ -28,7 +28,7 @@ public class Main extends Application {
 			//Model.initInventory(); //(uncomment to initialize inventory if none exists) change more
 			Stage window = primaryStage;
 			window.setTitle("p1920709 Jack Tan Xin Jie");
-			window.setResizable(false);
+//			window.setResizable(false); // Dont allow expand
 			Inventory.loadFiles();    //loads the saved data.properties file
 			Model.loadFiles();        //loads the user.properties file
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main.fxml"));

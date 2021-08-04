@@ -1,14 +1,7 @@
 package model;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Properties;
+public class InitInventory  {
 
-import model.*;
-
-public class InitInventory {
     //development method, used to create an initial inventory for the user
 //    public static void initInventory() throws IOException {
 //        HashMap<String, String> hash;

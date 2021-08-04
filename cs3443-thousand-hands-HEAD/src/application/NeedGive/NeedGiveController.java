@@ -51,7 +51,7 @@ import javafx.scene.layout.AnchorPane;
  ********************************************************************
  */
 
-public class NeedGiveController implements Initializable  {
+public class NeedGiveController implements Initializable {
 
 	//class attributes. They must be static since calling the scene change
 	//methods reinstatiates the class, static variables allows the data to 
@@ -85,12 +85,14 @@ public class NeedGiveController implements Initializable  {
 	@FXML
 	private ChoiceBox<String> productField;
 	@FXML
+	private ChoiceBox<String> position;
+	@FXML
 	private Label mylabel;
 	@FXML
 	private TextField quantityField;
 
 
-;
+	;
 	/*****************************************************************
 	 * 				needToMain()
 	 *****************************************************************
@@ -180,6 +182,13 @@ public class NeedGiveController implements Initializable  {
 			a.setContentText("User ID is invalid, please enter username in the format:\n\nabc123");
 		}
 		a.show();    //displays alert after condition
+	}
+
+	@FXML
+	void checkPosition(ActionEvent event) throws IOException, InvalidUserException {
+		String text = productField.getValue();
+
+
 	}
 
 	/*****************************************************************
@@ -371,7 +380,11 @@ public class NeedGiveController implements Initializable  {
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		ArrayList<String> datas = new ArrayList<String>();
-
+		ArrayList<String> positionfields = new ArrayList<String>();
+		positionfields.add("Hawker");
+		positionfields.add("Needy");
+		positionfields.add("Regular User");
+		boolean isHawker = false;
 		try {
 			Inventory.loadFiles();
 		} catch (IOException e) {
@@ -383,7 +396,28 @@ public class NeedGiveController implements Initializable  {
 			System.out.println(data);
 			datas.add(data);
 		}
-		productField.getItems().addAll(datas);
+//		productField.getItems().addAll(datas);
+
+		if (Model.need == true) {
+			position.getItems().addAll(positionfields);
+			position.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+				if (newValue == "Hawker") {
+					productField.getItems().clear(); //initialising
+					productField.getItems().add("Thermometer");
+				} else {
+					productField.getItems().clear();//initialising
+					productField.getItems().addAll(datas);
+				}
+
+
+			}); //lambda function
+
+		} else {
+			position.getItems().addAll("Donor"); //donor tab
+			productField.getItems().clear();
+			productField.getItems().addAll(datas);
+		}
+
 	}
 }
 

@@ -127,6 +127,7 @@ public class InventoryController {
     		a.setContentText("Try donating an item!");
     		a.show();
     	}
+
     	
     }
     
@@ -171,11 +172,12 @@ public class InventoryController {
     		a.show();
     	}
     	
-    	
+    	inventoryList.refresh();
     	//sets InventoryList object to the data in the ObservableList object
     	inventoryList.setItems(Inventory.obsInventory);
     	
     }
+
 
 
 	

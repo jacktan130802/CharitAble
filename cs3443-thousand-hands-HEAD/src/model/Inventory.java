@@ -3,34 +3,21 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class Inventory {
+public class Inventory implements ConvertToHash {
     private static int quantity;
     private static String invitem;
-
     public static HashMap<String, String> hash = new HashMap<String, String>(); //this is my 2 data for OOP
-
-    //    public static HashMap<String, String> users = new HashMap<String, String>();
     public static Properties prop = new Properties();
-
-    //    public static Properties userProp = new Properties();
-
+    public static ObservableList<String> obsInventory = FXCollections.observableArrayList();
     public static File file = new File("data.properties");
 
-    //    public static File userFile = new File("users.properties");
-
-
-    //    public static File file = new File("data.properties");
-
-
-    public static ObservableList<String> obsInventory = FXCollections.observableArrayList();
+   static DataHandler dataHandler = new DataHandler();
 
 
     /*************************************************************************************
@@ -50,8 +37,7 @@ public class Inventory {
     public static boolean addItem(String item, String amount) throws IOException {
         quantity= Integer.parseInt(amount) ;
         invitem= item;
-        FileOutputStream writer = new FileOutputStream(file, true);
-
+      FileOutputStream writer = dataHandler.writeFile("data.properties",true);
         //checks if item is already in inventory, then adds user's amount to current value
         if (hash.containsKey(invitem)) {
 //            int add =quantity;
@@ -155,17 +141,16 @@ public class Inventory {
 
         reader.close();
 
-
+        ArrayList<String> tmpkey = new ArrayList<String>();
+        ArrayList<String> tmpprop = new ArrayList<String>();
         //iterates through the file and adds values to HashMap  -- Throw into hashmap!
         for (Object key : prop.stringPropertyNames()) {
             hash.put(key.toString(), prop.get(key).toString());//converting evrything to string.
+            tmpkey.add(key.toString());
+            tmpprop.add(prop.get(key).toString());
         }
-
-
-        //iterates through the file and adds values to HashMap
-//        for(Object key: userProp.stringPropertyNames()){
-//            users.put(key.toString(), userProp.get(key).toString());
-//        }
+        Inv.setAcc(tmpkey);
+        Inv.setQty(tmpprop);
 
     }
 
@@ -179,6 +164,14 @@ public class Inventory {
         Inventory.prop.putAll(Inventory.hash);
         FileOutputStream writer = new FileOutputStream(Inventory.file, true);
         Inventory.prop.store(writer, null);
+
+    }
+      @Override
+        public void ArrayToHash(ArrayList<String> tmpKey,ArrayList<String> tmpProp) {
+            for (String x :tmpKey) {
+                for(String y : tmpProp)
+                hash.put(x, y);//converting evrything to string.
+            }
 
     }
 }

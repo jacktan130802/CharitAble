@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="root" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main.MainController">
    <children>
-      <AnchorPane fx:id="homeAnchor" layoutX="-2.0" layoutY="-3.0" prefHeight="600.0" prefWidth="600.0" stylesheets="@../../../bin/application/application.css">
+      <AnchorPane fx:id="homeAnchor" prefHeight="600.0" prefWidth="600.0" stylesheets="@../../../bin/application/application.css">
          <children>
             <Button fx:id="needBtn" layoutX="37.0" layoutY="245.0" mnemonicParsing="false" onAction="#mainToNeed" prefHeight="250.0" prefWidth="249.0" stylesheets="@../../../bin/application/application.css">
                <tooltip>
@@ -44,6 +44,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
+            <Button layoutX="224.0" layoutY="551.0" mnemonicParsing="false" text="View Transactions" />
          </children>
       </AnchorPane>
    </children>
