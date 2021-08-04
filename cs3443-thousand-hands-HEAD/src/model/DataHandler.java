@@ -5,8 +5,9 @@ import java.io.*;
 public class DataHandler implements FileInterface {
 
 
+    @Override
     public String readFile(String file) {
-        String currentLine = ""; //Init value
+        String currentLine=""; //Init value
         try (BufferedReader reader = new BufferedReader
                 (new InputStreamReader(new FileInputStream(file), "UTF-8"))) {
             currentLine = reader.readLine();    //Obtain value from
@@ -21,13 +22,18 @@ public class DataHandler implements FileInterface {
     }
 
     @Override
-    public FileOutputStream writeFile(String file, boolean append) throws FileNotFoundException {
+    public void writeFile(String file,String inputString) {
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
+            BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
 
-        FileOutputStream outputStream = new FileOutputStream(file, append);
-        // OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
+            bufferedWriter.write(inputString);
 
-
-        return outputStream;
-
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }

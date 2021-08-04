@@ -15,8 +15,8 @@ import java.util.ResourceBundle;
 import handler.InvalidUserException;
 import handler.Toast;
 import javafx.fxml.Initializable;
-import javafx.stage.Stage;
-import model.Inventory;
+import model.Donor;
+import model.InventoryHandler;
 import model.Model;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -24,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import model.Needy;
 
 /********************************************************************
  * 			NeedGiveController - Covid-19 Donation app
@@ -296,7 +297,7 @@ public class NeedGiveController implements Initializable {
 		//System.out.println(Models.hash);
 		//makes alert object
 		Alert a = new Alert(AlertType.CONFIRMATION);
-		FileOutputStream writer = new FileOutputStream(Inventory.file, true);
+		FileOutputStream writer = new FileOutputStream(InventoryHandler.file, true);
 		a.setHeaderText("Donation Complete!");
 
 		//checks for valid input in all fields
@@ -308,17 +309,21 @@ public class NeedGiveController implements Initializable {
 			String user = userField.getText();
 			String item = productField.getValue();
 			String amount = quantityField.getText();
-
+			Donor donor = null;
+			Needy needy = null;
+			if(Model.need == false) {
+				donor = new Donor(user, item, amount);
+			}else
+				needy = new Needy(user,position.getValue(),item,amount);
 			//adds user's name to map of existing users
-			Model.addUserName(user);
-
+			Model.addUserName(user);//for altering the data.properties.
 
 			//on Need View
 			if (Model.need == true) {
 
 				//subtractItem() will return -1 if item is not found, 0 if item is found but user has requested too much
 				//Otherwise, it returns the difference after making the withdrawal
-				int difference = Inventory.subtractItem(item, amount);
+				int difference = needy.subtractItem();
 				if (difference > 0) {
 					//clears input fields
 					userField.clear();
@@ -346,7 +351,7 @@ public class NeedGiveController implements Initializable {
 			} else {
 
 				//Model.additem() returns true if the item is found in inventory in order to change alerts
-				if (Inventory.addItem(item, amount)) {
+				if (donor.addItem()) {
 					a.setContentText("You have added " + item + " (x" + amount + ") to existing inventory.\nThank you " + user + "!");
 				} else {
 					a.setContentText("You have donated " + item + " (x" + amount + ")\nThank you " + user + "!");
@@ -386,12 +391,12 @@ public class NeedGiveController implements Initializable {
 		positionfields.add("Regular User");
 		boolean isHawker = false;
 		try {
-			Inventory.loadFiles();
+			InventoryHandler.loadFiles();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		String data = "";
-		for (Map.Entry<String, String> entry : Inventory.hash.entrySet()) {
+		for (Map.Entry<String, String> entry : InventoryHandler.hash.entrySet()) {
 			data = entry.getKey();
 			System.out.println(data);
 			datas.add(data);

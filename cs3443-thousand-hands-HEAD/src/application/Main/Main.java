@@ -6,10 +6,7 @@
  */
 package application.Main;
 	
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Map;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -29,7 +26,7 @@ public class Main extends Application {
 			Stage window = primaryStage;
 			window.setTitle("p1920709 Jack Tan Xin Jie");
 //			window.setResizable(false); // Dont allow expand
-			Inventory.loadFiles();    //loads the saved data.properties file
+			InventoryHandler.loadFiles();    //loads the saved data.properties file
 			Model.loadFiles();        //loads the user.properties file
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main.fxml"));
 			Scene scene = new Scene(root,600,600);

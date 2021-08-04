@@ -27,7 +27,7 @@ import javafx.collections.ObservableList;
 public class Model {//for methods of altering the inventory.
 
 	//Instantiations of all classes used in data structure for the app
-	public static boolean need = true;
+	public static boolean need = true; //need page
 	public static HashMap<String, String> users = new HashMap<String, String>();
 	public static Properties userProp = new Properties();
 	public static File userFile = new File("users.properties");
@@ -44,7 +44,8 @@ public class Model {//for methods of altering the inventory.
 
 		if (!users.containsKey(user)) {
 			FileOutputStream writer = new FileOutputStream(userFile, true);
-			users.put(user, "user");
+//			users.put(user, "user");
+			users.put(user,"user");
 			Model.userProp.putAll(Model.users);
 			Model.userProp.store(writer, user);
 			writer.close();

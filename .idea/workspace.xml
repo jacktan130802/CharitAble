@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3098ed37-ed96-41cf-b31c-10e94148bce7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/InventoryHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/application/Inventory/InventoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/application/Inventory/InventoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/application/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/application/Main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/application/NeedGive/NeedGive.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/application/NeedGive/NeedGive.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/application/NeedGive/NeedGiveController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/application/NeedGive/NeedGiveController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/DataHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/DataHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/FileInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/FileInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/Inv.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/Inventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/bin/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/application/Inventory/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/application/Inventory/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/application/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/application/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/application/NeedGive/NeedGive.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/application/NeedGive/NeedGive.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/application/NeedGive/NeedGiveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/application/NeedGive/NeedGiveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/DataHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/FileInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/FileInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/Inv.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/cs3443-thousand-hands-HEAD/src/model/User.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1wGnE4gSa3b1oIzEV8JW9s4Nc0e" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3098ed37-ed96-41cf-b31c-10e94148bce7" name="Default Changelist" comment="" />
+      <created>1628093678320</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628093678320</updated>
+    </task>
+    <servers />
+  </component>
+</project>
