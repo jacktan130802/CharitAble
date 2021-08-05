@@ -122,6 +122,7 @@ public class NeedGiveController implements Initializable {
 		needGivePane.getChildren().setAll(pane);
 	}
 
+
 	/*****************************************************************
 	 * 				needToInv()
 	 *****************************************************************
@@ -313,11 +314,12 @@ public class NeedGiveController implements Initializable {
 			Needy needy = null;
 			if(Model.need == false) {
 				donor = new Donor(user, item, amount);
-			}else
-				needy = new Needy(user,position.getValue(),item,amount);
-			//adds user's name to map of existing users
-			Model.addUserName(user);//for altering the data.properties.
-
+				Model.addUserName(user, "(donor)" + " GAVE " + amount + " " +  item);
+			}else {
+				needy = new Needy(user, position.getValue(), item, amount);
+				//adds user's name to map of existing users
+				Model.addUserName(user, "(" +needy.getPosition() + " ) RECIEVED " + amount+ " " +  item);//for altering the data.properties.
+			}
 			//on Need View
 			if (Model.need == true) {
 

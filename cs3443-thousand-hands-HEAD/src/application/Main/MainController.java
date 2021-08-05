@@ -178,6 +178,12 @@ public class MainController {
 		root.getChildren().setAll(pane);
 
 	}
+	@FXML
+	void maintoTransaction(ActionEvent event) throws IOException{
+		AnchorPane pane = FXMLLoader.load(getClass().getResource("../Transaction/Transaction.fxml"));
+		root.getChildren().setAll(pane);
+	}
+
 
 	/*****************************************************************
 	 * 				viewAbout()

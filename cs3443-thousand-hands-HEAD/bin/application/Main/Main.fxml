@@ -44,7 +44,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <Button layoutX="224.0" layoutY="551.0" mnemonicParsing="false" text="View Transactions" />
+            <Button layoutX="224.0" layoutY="551.0" mnemonicParsing="false" text="View Transactions" onAction="#maintoTransaction" />
          </children>
       </AnchorPane>
    </children>

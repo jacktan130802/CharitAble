@@ -4,7 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Needy extends User {
-    private String position;
+    static String position;
 
     public String getPosition() {
         return position;

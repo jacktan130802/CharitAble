@@ -36,16 +36,18 @@ public class Model {//for methods of altering the inventory.
 		return need;
 	}
 
-	public static boolean addUserName(String user) throws IOException, InvalidUserException {
+	public static boolean addUserName(String user,String position) throws IOException, InvalidUserException {
 
 		if (!verifyUser(user)) {
 			throw new InvalidUserException("Invalid username. Not in form abc123");
 		}
 
 		if (!users.containsKey(user)) {
+
+
 			FileOutputStream writer = new FileOutputStream(userFile, true);
 //			users.put(user, "user");
-			users.put(user,"user");
+			users.put(user,position);
 			Model.userProp.putAll(Model.users);
 			Model.userProp.store(writer, user);
 			writer.close();
