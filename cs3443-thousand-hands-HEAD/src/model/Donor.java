@@ -42,21 +42,21 @@ public class Donor extends User {
          String invitem;
         quantity= Integer.parseInt(qty) ;
         invitem= donated;
-        FileOutputStream writer = new FileOutputStream(InventoryHandler.file, true);
+        FileOutputStream writer = new FileOutputStream(Inventory.file, true);
         //checks if item is already in inventory, then adds user's amount to current value
-        if (InventoryHandler.hash.containsKey(invitem)) {
+        if (Inventory.hash.containsKey(invitem)) {
 //            int add =quantity;
-            InventoryHandler.hash.replace(donated, "" + (quantity + Integer.parseInt(InventoryHandler.hash.get(invitem))));
-            InventoryHandler.prop.putAll(InventoryHandler.hash);
-            InventoryHandler.prop.store(writer, null);
+            Inventory.hash.replace(donated, "" + (quantity + Integer.parseInt(Inventory.hash.get(invitem))));
+            Inventory.prop.putAll(Inventory.hash);
+            Inventory.prop.store(writer, null);
             return true;
 
 
             //otherwise creates a new entry
         } else {
-            InventoryHandler.hash.put(invitem, String.format(invitem));
-            InventoryHandler.prop.putAll(InventoryHandler.hash);
-            InventoryHandler.prop.store(writer, null);
+            Inventory.hash.put(invitem, String.format(invitem));
+            Inventory.prop.putAll(Inventory.hash);
+            Inventory.prop.store(writer, null);
             return false;
 
         }

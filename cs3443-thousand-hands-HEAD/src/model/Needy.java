@@ -6,6 +6,7 @@ import java.io.IOException;
 public class Needy extends User {
     static String position;
 
+    public static String incomeStatus; //must be private. Method can but user attr. must be private
     public String getPosition() {
         return position;
     }
@@ -21,21 +22,19 @@ public class Needy extends User {
     String name = super.name;
     String item = super.ItemsDonated;
     String amount = super.Qty;
+
     public int subtractItem() throws IOException {
         int quantity;
-        String invitem;
         quantity = Integer.parseInt(amount);
-        invitem = item;
-
-        FileOutputStream writer = new FileOutputStream(InventoryHandler.file, true);
-        if (InventoryHandler.hash.containsKey(item)) {
-            if ((int) Integer.parseInt(InventoryHandler.hash.get(item)) >= quantity) { //change amount to string.
-                int difference = (int) Integer.parseInt(InventoryHandler.hash.get(item)) - quantity;  //deduction from inventory
+        FileOutputStream writer = new FileOutputStream(Inventory.file, true);
+        if (Inventory.hash.containsKey(item)) {
+            if ((int) Integer.parseInt(Inventory.hash.get(item)) >= quantity) { //change amount to string.
+                int difference = (int) Integer.parseInt(Inventory.hash.get(item)) - quantity;  //deduction from inventory
 
                 //replaces the amount of the item with the difference after user received a donation
-                InventoryHandler.hash.replace(item, "" + difference);
-                InventoryHandler.prop.putAll(InventoryHandler.hash);
-                InventoryHandler.prop.store(writer, null);  //writes to file
+                Inventory.hash.replace(item, "" + difference);
+                Inventory.prop.putAll(Inventory.hash);
+                Inventory.prop.store(writer, null);  //writes to file
                 writer.close();
                 return difference;
             } else {

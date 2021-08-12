@@ -1,7 +1,9 @@
 package model;
 
-public class User extends DataObject {
+public class User {
    public String name;
+   String Qty;
+   String ItemsDonated;
     public User(String name, String donated, String qty) {
         this.name = name;
         Qty = qty;

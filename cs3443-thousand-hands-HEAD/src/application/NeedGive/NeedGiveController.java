@@ -1,8 +1,3 @@
-/*
- *	jie134 - Ryan Gill
- *	CS-3443-003
- *	Dr. Rathore
- */
 package application.NeedGive;
 
 import java.io.FileOutputStream;
@@ -15,16 +10,13 @@ import java.util.ResourceBundle;
 import handler.InvalidUserException;
 import handler.Toast;
 import javafx.fxml.Initializable;
-import model.Donor;
-import model.InventoryHandler;
-import model.Model;
+import model.*;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import model.Needy;
 
 /********************************************************************
  * 			NeedGiveController - Covid-19 Donation app
@@ -88,12 +80,19 @@ public class NeedGiveController implements Initializable {
 	@FXML
 	private ChoiceBox<String> position;
 	@FXML
+	private ChoiceBox<String> Income;
+	@FXML
 	private Label mylabel;
 	@FXML
+	private Label needLabel;
+	@FXML
 	private TextField quantityField;
+	@FXML
+	private static Label label1;
 
-
-	;
+public static void setlabel(){
+	label1.setText("hi");
+};
 	/*****************************************************************
 	 * 				needToMain()
 	 *****************************************************************
@@ -111,8 +110,8 @@ public class NeedGiveController implements Initializable {
 	 *
 	 *****************************************************************
 	 */
-	Model model = new Model();
-	Toast toast;
+//	User2 model = new User2();
+//	Toast toast;
 
 	@FXML
 	void needToMain(ActionEvent event) throws IOException {
@@ -175,7 +174,7 @@ public class NeedGiveController implements Initializable {
 		a.setHeaderText("User ID");
 
 		//valid username
-		if (Model.verifyUser(text)) {
+		if (VerifyUser.verifyUser(text)) {
 			a.setContentText("User ID is valid!");
 
 			//invalid
@@ -218,7 +217,7 @@ public class NeedGiveController implements Initializable {
 		a.setHeaderText("Product");
 
 		//valid item
-		if (Model.verifyProduct(text)) {
+		if (VerifyUser.verifyProduct(text)) {
 			a.setContentText("Product Name is valid!");
 
 			//invalid
@@ -254,7 +253,7 @@ public class NeedGiveController implements Initializable {
 		a.setHeaderText("Item Quantity");
 
 		//valid
-		if (Model.verifyInt(text)) {
+		if (VerifyUser.verifyInt(text)) {
 			a.setContentText("Item Quantity is valid!");
 
 			//invalid
@@ -298,31 +297,44 @@ public class NeedGiveController implements Initializable {
 		//System.out.println(Models.hash);
 		//makes alert object
 		Alert a = new Alert(AlertType.CONFIRMATION);
-		FileOutputStream writer = new FileOutputStream(InventoryHandler.file, true);
+		FileOutputStream writer = new FileOutputStream(Inventory.file, true);
 		a.setHeaderText("Donation Complete!");
 
+
 		//checks for valid input in all fields
-		if (Model.verifyUser(userField.getText()) &&
-				Model.verifyProduct(productField.getValue()) &&
-				Model.verifyInt(quantityField.getText())) {
+		if (VerifyUser.verifyUser(userField.getText()) &&
+				VerifyUser.verifyProduct(productField.getValue()) &&
+				VerifyUser.verifyInt(quantityField.getText())) {
 
 			//assigns variables to fields if they are valid
 			String user = userField.getText();
 			String item = productField.getValue();
 			String amount = quantityField.getText();
 			Donor donor = null;
+			boolean choice = false;
 			Needy needy = null;
-			if(Model.need == false) {
+			if(User2.need == false) {
+				if(Income.getValue()=="Yes") choice=true;
+				else choice=false; //wheter to remain anonymous;
+				User2.anonymous = choice; //set the choice of the user
+
+//				needLabel.setText("We are here to help! ");
+//				label1.setText("Income : ");
 				donor = new Donor(user, item, amount);
-				Model.addUserName(user, "(donor)" + " GAVE " + amount + " " +  item);
+				User2.addUserName(user, "(donor)" + " GAVE " + amount + " " +  item);
 			}else {
+//				needLabel.setText("Thank you for donating! ");
+//				label1.setText("Show name? ");
 				needy = new Needy(user, position.getValue(), item, amount);
 				//adds user's name to map of existing users
-				Model.addUserName(user, "(" +needy.getPosition() + " ) RECIEVED " + amount+ " " +  item);//for altering the data.properties.
+				User2.addUserName(user, "(" +needy.getPosition() + " ) RECIEVED " + amount+ " " +  item);//for altering the data.properties.
 			}
 			//on Need View
-			if (Model.need == true) {
-
+			if (User2.need == true) {
+//				String income = Income.getValue().toString();
+//				Integer.parseInt(income)
+				if(Income.getValue() == "<$2000") Needy.incomeStatus= "low";
+				else Needy.incomeStatus="Ok";
 				//subtractItem() will return -1 if item is not found, 0 if item is found but user has requested too much
 				//Otherwise, it returns the difference after making the withdrawal
 				int difference = needy.subtractItem();
@@ -388,25 +400,40 @@ public class NeedGiveController implements Initializable {
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		ArrayList<String> datas = new ArrayList<String>();
 		ArrayList<String> positionfields = new ArrayList<String>();
+		ArrayList<String> income = new ArrayList<String>();
+		income.add("<$2000");
+		income.add(">$2000");
 		positionfields.add("Hawker");
 		positionfields.add("Needy");
 		positionfields.add("Regular User");
 		boolean isHawker = false;
 		try {
-			InventoryHandler.loadFiles();
+			Inventory.loadFiles();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		String data = "";
-		for (Map.Entry<String, String> entry : InventoryHandler.hash.entrySet()) {
+		for (Map.Entry<String, String> entry : Inventory.hash.entrySet()) {
 			data = entry.getKey();
 			System.out.println(data);
 			datas.add(data);
 		}
 //		productField.getItems().addAll(datas);
 
-		if (Model.need == true) {
+		if (User2.need == true) {
+			Income.getItems().addAll(income);
 			position.getItems().addAll(positionfields);
+//			income. //add income.
+			Income.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+					if(newValue=="<$2000"){
+						productField.getItems().clear();
+						datas.add("Free Tickets");
+					}else {
+						productField.getItems().clear();//initialising
+						productField.getItems().addAll(datas);
+					}
+
+			});
 			position.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
 				if (newValue == "Hawker") {
 					productField.getItems().clear(); //initialising
@@ -417,10 +444,15 @@ public class NeedGiveController implements Initializable {
 				}
 
 
+
 			}); //lambda function
 
 		} else {
 			position.getItems().addAll("Donor"); //donor tab
+			ArrayList<String> yesno = new ArrayList<String>();
+			yesno.add("Yes");
+			yesno.add("No");
+			Income.getItems().addAll(yesno);
 			productField.getItems().clear();
 			productField.getItems().addAll(datas);
 		}

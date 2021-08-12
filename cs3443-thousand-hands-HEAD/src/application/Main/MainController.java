@@ -3,6 +3,7 @@ package application.Main;
 import java.io.IOException;
 import java.util.Map.Entry;
 
+import application.NeedGive.NeedGiveController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import model.Model;
+import model.User2;
 
 /********************************************************************
  * 			MainController - Covid-19 Donation app
@@ -60,6 +61,8 @@ public class MainController {
 
 	@FXML
 	private Label label;
+	@FXML
+	private Label label1;
 	/*****************************************************************
 	 * 				mainToNeed()
 	 *****************************************************************
@@ -84,7 +87,7 @@ public class MainController {
 	void mainToNeed(ActionEvent event) throws IOException {
 
 		//sets the static flag
-		Model.need = true;
+		User2.need = true;
 
 		//new AnchorPane object with view we want to load
 		AnchorPane pane = FXMLLoader.load(getClass().getResource("../NeedGive/NeedGive.fxml"));
@@ -97,7 +100,7 @@ public class MainController {
 		Node outer = pane.getChildren().get(0);
 		for (Node inner : ((AnchorPane) outer).getChildren()) {
 			if (inner instanceof Label) {
-				((Label) inner).setText("We're here to help!");
+				((Label) inner).setText("Income: ");
 			}
 		}
 
@@ -130,7 +133,7 @@ public class MainController {
 	void mainToGive(ActionEvent event) throws IOException {
 
 		//sets the static flag
-		Model.need = false;
+		User2.need = false;
 
 		//new AnchorPane object with view we want to load
 		AnchorPane pane = FXMLLoader.load(getClass().getResource("../NeedGive/NeedGive.fxml"));
@@ -143,9 +146,16 @@ public class MainController {
 		Node outer = pane.getChildren().get(0);
 		for (Node inner : ((AnchorPane) outer).getChildren()) {
 			if (inner instanceof Label) {
-				((Label) inner).setText("Thank you for donating!");
+				((Label) inner).setText("Show name? : ");
+
 			}
 		}
+//		NeedGiveController.setlabel();
+
+
+
+//		Node inner = null;
+//		((Label)inner).setText("Show name?");
 
 		//sets the scene using modified object by accessing the current scene's children
 		root.getChildren().setAll(pane);
@@ -209,7 +219,7 @@ public class MainController {
 		String output = "CharitAble is an application that helps those in need during the COVID-19 pandemic. ";
 		output += "Offer a donation using the Give Button, or press the Need Button if you require supplies.\nThank you for donating:\n\n";
 		int i = 0;
-		for (Entry<String, String> entry : Model.users.entrySet()) {
+		for (Entry<String, String> entry : User2.users.entrySet()) {
 			if (i < 5)
 				output += entry.getKey() + "\n";
 			i++;
