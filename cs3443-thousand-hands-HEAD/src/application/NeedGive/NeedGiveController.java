@@ -84,14 +84,14 @@ public class NeedGiveController implements Initializable {
 	private Label mylabel;
 	@FXML
 	private Label needLabel;
+	public static Label static_needlabel;
 	@FXML
 	private TextField quantityField;
 	@FXML
-	private static Label label1;
+	private  Label label1;
+	public static Label static_label;
 
-public static void setlabel(){
-	label1.setText("hi");
-};
+
 	/*****************************************************************
 	 * 				needToMain()
 	 *****************************************************************
@@ -239,7 +239,7 @@ public static void setlabel(){
 	 *		FXML 
 	 *	Helpers:
 	 *		verifyInt()
-	 *
+	 *f
 	 *	Gets amount info and determines its validity
 	 *
 	 *****************************************************************
@@ -396,6 +396,8 @@ public static void setlabel(){
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		static_label = label1; 
+		static_needlabel = needLabel;
 		ArrayList<String> datas = new ArrayList<String>();
 		ArrayList<String> positionfields = new ArrayList<String>();
 		ArrayList<String> income = new ArrayList<String>();
