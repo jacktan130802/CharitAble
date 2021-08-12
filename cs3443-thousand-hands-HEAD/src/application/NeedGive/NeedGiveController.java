@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import handler.InvalidUserException;
-import handler.Toast;
 import javafx.fxml.Initializable;
 import model.*;
 import javafx.scene.control.*;
@@ -290,6 +289,7 @@ public static void setlabel(){
 	 * @throws InvalidUserException
 	 *
 	 *****************************************************************
+	 * @return
 	 */
 	@FXML
 	void process(ActionEvent event) throws IOException, InvalidUserException {
@@ -316,27 +316,25 @@ public static void setlabel(){
 			if(User2.need == false) {
 				if(Income.getValue()=="Yes") choice=true;
 				else choice=false; //wheter to remain anonymous;
-				User2.anonymous = choice; //set the choice of the user
+				donor = new Donor(user, item, amount,choice); //creating the donor
+				User2.addUserName(user, "(donor)" + " GAVE " + amount + " " +  item,donor);
 
-//				needLabel.setText("We are here to help! ");
-//				label1.setText("Income : ");
-				donor = new Donor(user, item, amount);
-				User2.addUserName(user, "(donor)" + " GAVE " + amount + " " +  item);
-			}else {
-//				needLabel.setText("Thank you for donating! ");
-//				label1.setText("Show name? ");
-				needy = new Needy(user, position.getValue(), item, amount);
-				//adds user's name to map of existing users
-				User2.addUserName(user, "(" +needy.getPosition() + " ) RECIEVED " + amount+ " " +  item);//for altering the data.properties.
 			}
+//			else {
+////				needLabel.setText("Thank you for donating! ");
+////				label1.setText("Show name? ");
+//				needy = new Needy(user, position.getValue(), item, amount,);
+//				//adds user's name to map of existing users
+//				User2.addUserName(user, "(" +needy.getPosition() + " ) RECIEVED " + amount+ " " +  item);//for altering the data.properties.
+//			}
 			//on Need View
 			if (User2.need == true) {
-//				String income = Income.getValue().toString();
-//				Integer.parseInt(income)
-				if(Income.getValue() == "<$2000") Needy.incomeStatus= "low";
-				else Needy.incomeStatus="Ok";
+				String incomeStatus;
+				if(Income.getValue() == "<$2000")incomeStatus= "low";
+				else incomeStatus="Ok";
 				//subtractItem() will return -1 if item is not found, 0 if item is found but user has requested too much
 				//Otherwise, it returns the difference after making the withdrawal
+				needy = new Needy(user, position.getValue(), item, amount,incomeStatus);
 				int difference = needy.subtractItem();
 				if (difference > 0) {
 					//clears input fields
