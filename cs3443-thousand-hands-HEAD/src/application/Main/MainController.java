@@ -30,7 +30,7 @@ import model.User2;
  ********************************************************************
  */
 
-public class MainController  {
+public class MainController {
 
 
 	//Main.FXML elements
@@ -91,9 +91,18 @@ public class MainController  {
 
 		//new AnchorPane object with view we want to load
 		AnchorPane pane = FXMLLoader.load(getClass().getResource("../NeedGive/NeedGive.fxml"));
+
+		//style changes, elements must be accessed directly from the new object.
+		//the class attributes seem inaccessible with getter methods, (I get a
+		//null-pointer error) the getChildren methods allow you to traverse the child
+		//objects of the AnchorPane object
 		pane.setStyle("-fx-background-color: #f58994;");
-		NeedGiveController.static_label.setText("     Income : ");
-		NeedGiveController.static_needlabel.setText("  We are here to help you...");
+		Node outer = pane.getChildren().get(0);
+		for (Node inner : ((AnchorPane) outer).getChildren()) {
+			if (inner instanceof Label) {
+				((Label) inner).setText("Income: ");
+			}
+		}
 
 		//sets the scene using modified object by accessing the current scene's children
 		root.getChildren().setAll(pane);
@@ -135,14 +144,14 @@ public class MainController  {
 		//objects of the AnchorPane object
 		pane.setStyle("-fx-background-color: #83fc83;");
 		Node outer = pane.getChildren().get(0);
-//		for (Node inner : ((AnchorPane) outer).getChildren()) {
-//			if (inner instanceof Label) {
-//				((Label) inner).setText("Show name? : ");
-//
-//			}
-//		}
-		NeedGiveController.static_label.setText("    Anonymity : ");
-		NeedGiveController.static_needlabel.setText("  Thank you for donating! ");
+		for (Node inner : ((AnchorPane) outer).getChildren()) {
+			if (inner instanceof Label) {
+				((Label) inner).setText("Show name? : ");
+
+			}
+		}
+//		NeedGiveController.setlabel();
+
 
 
 //		Node inner = null;
