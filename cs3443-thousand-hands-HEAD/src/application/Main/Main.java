@@ -27,7 +27,7 @@ public class Main extends Application {
 			window.setTitle("p1920709 Jack Tan Xin Jie");
 			window.setResizable(false); // Dont allow expand
 			Inventory.loadFiles();    //loads the saved data.properties file
-			User2.loadUser();        //loads the user.properties file
+			User.loadUser();        //loads the user.properties file
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main.fxml"));
 			Scene scene = new Scene(root,600,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

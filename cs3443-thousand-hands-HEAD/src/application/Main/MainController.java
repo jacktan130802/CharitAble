@@ -13,7 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import model.User2;
+import model.User;
+
 
 /********************************************************************
  * 			MainController - Covid-19 Donation app
@@ -24,13 +25,13 @@ import model.User2;
  *		selection.
  *
  *Notes:
- *		A simple refactor from lab4 into a new controller file  
+ *		A simple refactor from lab4 into a new controller file
  *
  *
  ********************************************************************
  */
 
-public class MainController {
+public class MainController  {
 
 
 	//Main.FXML elements
@@ -87,22 +88,13 @@ public class MainController {
 	void mainToNeed(ActionEvent event) throws IOException {
 
 		//sets the static flag
-		User2.need = true;
+		User.need = true;
 
 		//new AnchorPane object with view we want to load
 		AnchorPane pane = FXMLLoader.load(getClass().getResource("../NeedGive/NeedGive.fxml"));
-
-		//style changes, elements must be accessed directly from the new object.
-		//the class attributes seem inaccessible with getter methods, (I get a
-		//null-pointer error) the getChildren methods allow you to traverse the child
-		//objects of the AnchorPane object
 		pane.setStyle("-fx-background-color: #f58994;");
-		Node outer = pane.getChildren().get(0);
-		for (Node inner : ((AnchorPane) outer).getChildren()) {
-			if (inner instanceof Label) {
-				((Label) inner).setText("Income: ");
-			}
-		}
+		NeedGiveController.static_label.setText("     Income : ");
+		NeedGiveController.static_needlabel.setText("   We are here to help you...");
 
 		//sets the scene using modified object by accessing the current scene's children
 		root.getChildren().setAll(pane);
@@ -133,7 +125,7 @@ public class MainController {
 	void mainToGive(ActionEvent event) throws IOException {
 
 		//sets the static flag
-		User2.need = false;
+		User.need = false;
 
 		//new AnchorPane object with view we want to load
 		AnchorPane pane = FXMLLoader.load(getClass().getResource("../NeedGive/NeedGive.fxml"));
@@ -144,14 +136,14 @@ public class MainController {
 		//objects of the AnchorPane object
 		pane.setStyle("-fx-background-color: #83fc83;");
 		Node outer = pane.getChildren().get(0);
-		for (Node inner : ((AnchorPane) outer).getChildren()) {
-			if (inner instanceof Label) {
-				((Label) inner).setText("Show name? : ");
-
-			}
-		}
-//		NeedGiveController.setlabel();
-
+//		for (Node inner : ((AnchorPane) outer).getChildren()) {
+//			if (inner instanceof Label) {
+//				((Label) inner).setText("Show name? : ");
+//
+//			}
+//		}
+		NeedGiveController.static_label.setText("  Anonymity : ");
+		NeedGiveController.static_needlabel.setText("  Thank you for donating! ");
 
 
 //		Node inner = null;
@@ -219,7 +211,7 @@ public class MainController {
 		String output = "CharitAble is an application that helps those in need during the COVID-19 pandemic. ";
 		output += "Offer a donation using the Give Button, or press the Need Button if you require supplies.\nThank you for donating:\n\n";
 		int i = 0;
-		for (Entry<String, String> entry : User2.users.entrySet()) {
+		for (Entry<String, String> entry : User.users.entrySet()) {
 			if (i < 5)
 				output += entry.getKey() + "\n";
 			i++;

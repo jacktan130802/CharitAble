@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import model.User2;
+import model.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,7 +30,7 @@ public class TransactionController implements Initializable {
         String[] usersproperties = {",",","};
         String data;
         ArrayList<String> test = new ArrayList<>();
-        for (Map.Entry<String, String> entry:  User2.users.entrySet()) {
+        for (Map.Entry<String, String> entry:  User.users.entrySet()) {
 
             //sets data string by concatenating strings from HashMap key and value
             data = entry.getKey() + " who is a " + entry.getValue() ;

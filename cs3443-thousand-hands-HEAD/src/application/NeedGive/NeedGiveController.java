@@ -84,28 +84,28 @@ public class NeedGiveController implements Initializable {
 	private Label mylabel;
 	@FXML
 	private Label needLabel;
+	public static Label static_needlabel;
 	@FXML
 	private TextField quantityField;
 	@FXML
-	private static Label label1;
+	private  Label label1;
+	public static Label static_label;
 
-public static void setlabel(){
-	label1.setText("hi");
-};
+
 	/*****************************************************************
 	 * 				needToMain()
 	 *****************************************************************
 	 *
-	 *	Parameters: 
+	 *	Parameters:
 	 *		event: ActionEvent - home button pressed
 	 *	Return Type:
 	 *		none
 	 *	Decorator:
-	 *		FXML 
+	 *		FXML
 	 *
 	 *	Switches the scene from the NeedGive view to the Main view
-	 *	Does so by instantiating a new AnchorPane (the parent element 
-	 *	of each view hierarchy) 
+	 *	Does so by instantiating a new AnchorPane (the parent element
+	 *	of each view hierarchy)
 	 *
 	 *****************************************************************
 	 */
@@ -125,16 +125,16 @@ public static void setlabel(){
 	 * 				needToInv()
 	 *****************************************************************
 	 *
-	 *	Parameters: 
+	 *	Parameters:
 	 *		event: ActionEvent - inventory button pressed
 	 *	Return Type:
 	 *		none
 	 *	Decorator:
-	 *		FXML 
+	 *		FXML
 	 *
 	 *	Switches the scene from the NeedGive view to the Inventory view
-	 *	Does so by instantiating a new AnchorPane (the parent element 
-	 *	of each view hierarchy) 
+	 *	Does so by instantiating a new AnchorPane (the parent element
+	 *	of each view hierarchy)
 	 *
 	 *****************************************************************
 	 */
@@ -152,12 +152,12 @@ public static void setlabel(){
 	 * 				checkUser()
 	 *****************************************************************
 	 *
-	 *	Parameters: 
+	 *	Parameters:
 	 *		event: ActionEvent - user button pressed
 	 *	Return Type:
 	 *		none
 	 *	Decorator:
-	 *		FXML 
+	 *		FXML
 	 *	Helpers:
 	 *		verifyText()
 	 *
@@ -195,12 +195,12 @@ public static void setlabel(){
 	 * 				checkProduct()
 	 *****************************************************************
 	 *
-	 *	Parameters: 
+	 *	Parameters:
 	 *		event: ActionEvent - item button pressed
 	 *	Return Type:
 	 *		none
 	 *	Decorator:
-	 *		FXML 
+	 *		FXML
 	 *	Helpers:
 	 *		verifyText()
 	 *
@@ -231,15 +231,15 @@ public static void setlabel(){
 	 * 				checkQuantity()
 	 *****************************************************************
 	 *
-	 *	Parameters: 
+	 *	Parameters:
 	 *		event: ActionEvent - amount button pressed
 	 *	Return Type:
 	 *		none
 	 *	Decorator:
-	 *		FXML 
+	 *		FXML
 	 *	Helpers:
 	 *		verifyInt()
-	 *
+	 *f
 	 *	Gets amount info and determines its validity
 	 *
 	 *****************************************************************
@@ -268,12 +268,12 @@ public static void setlabel(){
 	 * 				process()
 	 *****************************************************************
 	 *
-	 *	Parameters: 
+	 *	Parameters:
 	 *		event: ActionEvent - add/sub button pressed
 	 *	Return Type:
 	 *		none
 	 *	Decorator:
-	 *		FXML 
+	 *		FXML
 	 *	Helpers:
 	 *		verifyText()
 	 *		verifyInt()
@@ -283,8 +283,8 @@ public static void setlabel(){
 	 *	Determines if the user selected need or give on the main view
 	 *	using need flag, then makes a donation or receives a product
 	 *	if the item is available. The result to the user will be some
-	 *	alerts describing the donation, but the back end will still 
-	 *	process the inventory accordingly 
+	 *	alerts describing the donation, but the back end will still
+	 *	process the inventory accordingly
 	 * @throws IOException
 	 * @throws InvalidUserException
 	 *
@@ -313,11 +313,11 @@ public static void setlabel(){
 			Donor donor = null;
 			boolean choice = false;
 			Needy needy = null;
-			if(User2.need == false) {
+			if(User.need == false) {
 				if(Income.getValue()=="Yes") choice=true;
 				else choice=false; //wheter to remain anonymous;
 				donor = new Donor(user, item, amount,choice); //creating the donor
-				User2.addUserName(user, "(donor)" + " GAVE " + amount + " " +  item,donor);
+				User.addUserName(user, "(donor)" + " GAVE " + amount + " " +  item,donor);
 
 			}
 //			else {
@@ -328,7 +328,7 @@ public static void setlabel(){
 //				User2.addUserName(user, "(" +needy.getPosition() + " ) RECIEVED " + amount+ " " +  item);//for altering the data.properties.
 //			}
 			//on Need View
-			if (User2.need == true) {
+			if (User.need == true) {
 				String incomeStatus;
 				if(Income.getValue() == "<$2000")incomeStatus= "low";
 				else incomeStatus="Ok";
@@ -396,6 +396,8 @@ public static void setlabel(){
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		static_label = label1;
+		static_needlabel = needLabel;
 		ArrayList<String> datas = new ArrayList<String>();
 		ArrayList<String> positionfields = new ArrayList<String>();
 		ArrayList<String> income = new ArrayList<String>();
@@ -418,18 +420,18 @@ public static void setlabel(){
 		}
 //		productField.getItems().addAll(datas);
 
-		if (User2.need == true) {
+		if (User.need == true) {
 			Income.getItems().addAll(income);
 			position.getItems().addAll(positionfields);
 //			income. //add income.
 			Income.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
-					if(newValue=="<$2000"){
-						productField.getItems().clear();
-						datas.add("Free Tickets");
-					}else {
-						productField.getItems().clear();//initialising
-						productField.getItems().addAll(datas);
-					}
+				if(newValue=="<$2000"){
+					productField.getItems().clear();
+					datas.add("Free Tickets");
+				}else {
+					productField.getItems().clear();//initialising
+					productField.getItems().addAll(datas);
+				}
 
 			});
 			position.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
@@ -457,5 +459,3 @@ public static void setlabel(){
 
 	}
 }
-
-

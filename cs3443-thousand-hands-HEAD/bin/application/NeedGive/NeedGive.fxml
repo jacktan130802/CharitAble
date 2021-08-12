@@ -43,7 +43,7 @@
                <tooltip>
                   <Tooltip text="Process Donation" />
                </tooltip></Button>
-            <Label fx:id="needLabel" layoutX="272.0" layoutY="46.0">
+            <Label fx:id="needLabel" layoutX="223.0" layoutY="42.0">
                <font>
                   <Font size="30.0" />
                </font></Label>
