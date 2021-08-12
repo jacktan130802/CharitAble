@@ -4,10 +4,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Donor extends User {
-
+private boolean anonymous;
 //    public Donor(String Name, String Donated, String qty) {
 //
 //
+
+    public boolean isAnonymous() {
+        return anonymous;
+    }
 ////        name = Name;
 ////        ItemsDonated = Donated;
 ////        Qty = qty;
@@ -15,8 +19,10 @@ public class Donor extends User {
 //    }
 
 
-    public Donor(String name, String donated, String qty) {
+    public Donor(String name, String donated, String qty,boolean anonymous) {
         super(name, donated, qty);
+        this.anonymous = anonymous;
+     ;
     }
     String name = super.name;
     String donated = super.ItemsDonated;

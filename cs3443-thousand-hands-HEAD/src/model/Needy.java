@@ -4,9 +4,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Needy extends User {
-    static String position;
+    private String position;
 
-    public static String incomeStatus; //must be private. Method can but user attr. must be private
+    private String incomeStatus; //must be private. Method can but user attr. must be private
     public String getPosition() {
         return position;
     }
@@ -15,9 +15,10 @@ public class Needy extends User {
         this.position = position;
     }
 
-    public Needy(String name, String position, String donated, String qty) {
+    public Needy(String name, String position, String donated, String qty, String incomeStatus) {
         super(name, donated,qty);
         this.position = position;
+        this.incomeStatus= incomeStatus;
     }
     String name = super.name;
     String item = super.ItemsDonated;
