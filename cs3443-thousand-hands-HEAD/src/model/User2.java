@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
 
-import application.NeedGive.NeedGiveController;
 import handler.InvalidUserException;
 
 /********************************************************************
@@ -28,6 +27,7 @@ public class User2 {//for methods of altering the inventory.
 	public static HashMap<String, String> users = new HashMap<String, String>();
 	public static Properties userProp = new Properties();
 	public static File userFile = new File("users.properties");
+	public static boolean anonymous;
 	String user;
 	String position;
 
@@ -38,7 +38,7 @@ public class User2 {//for methods of altering the inventory.
 
 
 
-	public static boolean addUserName(String user,String position,Donor donor) throws IOException, InvalidUserException {
+	public static boolean addUserName(String user,String position) throws IOException, InvalidUserException {
 
 		if (!VerifyUser.verifyUser(user)) {
 			throw new InvalidUserException("Invalid username. Not in form abc123");
@@ -48,7 +48,7 @@ public class User2 {//for methods of altering the inventory.
 		//Add user
 		FileOutputStream writer = new FileOutputStream(userFile, true);
 			//users.put(user, "user");
-		if (donor.isAnonymous() == true) {
+		if (anonymous == true) {
 			users.put("XXX", position);
 		} else
 			users.put(user, position);
