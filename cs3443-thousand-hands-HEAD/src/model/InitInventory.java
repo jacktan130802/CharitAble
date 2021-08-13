@@ -13,7 +13,7 @@ public class InitInventory  {
         HashMap<String, String> hash;
         File file;
         Properties prop;
-        hash = Inventory.hash;
+        hash = Inventory.itemsQty;
         prop = Inventory.prop;
         file = Inventory.file;
         hash.put("Toilet Paper", "10");

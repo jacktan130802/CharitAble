@@ -335,7 +335,7 @@ public class NeedGiveController implements Initializable {
 				//subtractItem() will return -1 if item is not found, 0 if item is found but user has requested too much
 				//Otherwise, it returns the difference after making the withdrawal
 				needy = new Needy(user, position.getValue(), item, amount,incomeStatus);
-				int difference = needy.subtractItem();
+				int difference = needy.recieve();
 				if (difference > 0) {
 					//clears input fields
 					userField.clear();
@@ -363,7 +363,7 @@ public class NeedGiveController implements Initializable {
 			} else {
 
 				//Model.additem() returns true if the item is found in inventory in order to change alerts
-				if (donor.addItem()) {
+				if (donor.donate()) {
 					a.setContentText("You have added " + item + " (x" + amount + ") to existing inventory.\nThank you " + user + "!");
 				} else {
 					a.setContentText("You have donated " + item + " (x" + amount + ")\nThank you " + user + "!");
@@ -413,7 +413,7 @@ public class NeedGiveController implements Initializable {
 			e.printStackTrace();
 		}
 		String data = "";
-		for (Map.Entry<String, String> entry : Inventory.hash.entrySet()) {
+		for (Map.Entry<String, String> entry : Inventory.itemsQty.entrySet()) {
 			data = entry.getKey();
 			System.out.println(data);
 			datas.add(data);

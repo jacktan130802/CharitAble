@@ -24,17 +24,17 @@ public class Needy extends User {
     String item = super.ItemsDonated;
     String amount = super.Qty;
 
-    public int subtractItem() throws IOException {
+    public int recieve() throws IOException {
         int quantity;
         quantity = Integer.parseInt(amount);
         FileOutputStream writer = new FileOutputStream(Inventory.file, true);
-        if (Inventory.hash.containsKey(item)) {
-            if ((int) Integer.parseInt(Inventory.hash.get(item)) >= quantity) { //change amount to string.
-                int difference = (int) Integer.parseInt(Inventory.hash.get(item)) - quantity;  //deduction from inventory
+        if (Inventory.itemsQty.containsKey(item)) {
+            if ((int) Integer.parseInt(Inventory.itemsQty.get(item)) >= quantity) { //change amount to string.
+                int difference = (int) Integer.parseInt(Inventory.itemsQty.get(item)) - quantity;  //deduction from inventory
 
                 //replaces the amount of the item with the difference after user received a donation
-                Inventory.hash.replace(item, "" + difference);
-                Inventory.prop.putAll(Inventory.hash);
+                Inventory.itemsQty.replace(item, "" + difference);
+                Inventory.prop.putAll(Inventory.itemsQty);
                 Inventory.prop.store(writer, null);  //writes to file
                 writer.close();
                 return difference;

@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class Inventory {
 
-    public static HashMap<String, String> hash = new HashMap<String, String>(); //this is my 2 data for OOP
+    public static HashMap<String, String> itemsQty = new HashMap<String, String>(); //this is my 2 data for OOP
     public static Properties prop = new Properties();
     public static ObservableList<String> obsInventory = FXCollections.observableArrayList();
     public static File file = new File("data.properties");
@@ -33,8 +33,8 @@ public class Inventory {
      */
 
     public static int getNumberOfItemsInInventory(String data) { //string because from user input
-        if (hash.size() > 0) {
-            for (Map.Entry<String, String> entry : hash.entrySet()) {
+        if (itemsQty.size() > 0) {
+            for (Map.Entry<String, String> entry : itemsQty.entrySet()) {
 
                 if (entry.getKey().equals(data)) {
                     return Integer.parseInt(entry.getValue());
@@ -61,7 +61,7 @@ public class Inventory {
         ArrayList<String> tmpprop = new ArrayList<String>();
         //iterates through the file and adds values to HashMap  -- Throw into hashmap!
         for (Object key : prop.stringPropertyNames()) {
-            hash.put(key.toString(), prop.get(key).toString());//converting evrything to string.
+            itemsQty.put(key.toString(), prop.get(key).toString());//converting evrything to string.
             tmpkey.add(key.toString());
             tmpprop.add(prop.get(key).toString());
         }

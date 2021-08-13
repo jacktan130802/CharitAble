@@ -50,25 +50,25 @@ private int id ;
      *************************************************************************************
      */
 
-    public boolean addItem() throws IOException {
+    public boolean donate() throws IOException {
         int quantity;
          String invitem;
         quantity= Integer.parseInt(qty) ;
         invitem= donated;
         FileOutputStream writer = new FileOutputStream(Inventory.file, true);
         //checks if item is already in inventory, then adds user's amount to current value
-        if (Inventory.hash.containsKey(invitem)) {
+        if (Inventory.itemsQty.containsKey(invitem)) {
 //            int add =quantity;
-            Inventory.hash.replace(donated, "" + (quantity + Integer.parseInt(Inventory.hash.get(invitem))));
-            Inventory.prop.putAll(Inventory.hash);
+            Inventory.itemsQty.replace(donated, "" + (quantity + Integer.parseInt(Inventory.itemsQty.get(invitem))));
+            Inventory.prop.putAll(Inventory.itemsQty);
             Inventory.prop.store(writer, null);
             return true;
 
 
             //otherwise creates a new entry
         } else {
-            Inventory.hash.put(invitem, String.format(invitem));
-            Inventory.prop.putAll(Inventory.hash);
+            Inventory.itemsQty.put(invitem, String.format(invitem));
+            Inventory.prop.putAll(Inventory.itemsQty);
             Inventory.prop.store(writer, null);
             return false;
 

@@ -107,9 +107,9 @@ public class InventoryController {
     	String data = "";
     	
     	//if there is inventory
-    	if (Inventory.hash.size() > 0) {
+    	if (Inventory.itemsQty.size() > 0) {
     		InventoryController x = new InventoryController();
-	    	for (Entry<String, String> entry:  Inventory.hash.entrySet()) {
+	    	for (Entry<String, String> entry:  Inventory.itemsQty.entrySet()) {
 	    		
 	    		//sets data string by concatenating strings from HashMap key and value
 	    		data = entry.getKey() + " (x" + entry.getValue() + ")";
