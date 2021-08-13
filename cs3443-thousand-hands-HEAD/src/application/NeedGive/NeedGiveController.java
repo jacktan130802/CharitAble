@@ -316,7 +316,7 @@ public class NeedGiveController implements Initializable {
 			if(User.need == false) {
 				if(Income.getValue()=="Yes") choice=true;
 				else choice=false; //wheter to remain anonymous;
-				donor = new Donor(user, item, amount,choice); //creating the donor
+					donor = new Donor(user, item, amount,choice); //creating the donor
 				User.addUserName(user, "(donor)" + " GAVE " + amount + " " +  item,donor);
 
 			}
@@ -335,6 +335,8 @@ public class NeedGiveController implements Initializable {
 				//subtractItem() will return -1 if item is not found, 0 if item is found but user has requested too much
 				//Otherwise, it returns the difference after making the withdrawal
 				needy = new Needy(user, position.getValue(), item, amount,incomeStatus);
+
+				//Not OOpish
 				int difference = needy.recieve();
 				if (difference > 0) {
 					//clears input fields
@@ -408,7 +410,7 @@ public class NeedGiveController implements Initializable {
 		positionfields.add("Regular User");
 		boolean isHawker = false;
 		try {
-			Inventory.loadFiles();
+			Inventory.loadInventory();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

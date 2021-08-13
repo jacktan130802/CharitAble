@@ -10,7 +10,7 @@ private int id ;
 
 
 
-    public int genID(){
+    public int genRandomID(){
 
        id =(int) (Math.random()*((1000-100)+1))+100;
        return id;

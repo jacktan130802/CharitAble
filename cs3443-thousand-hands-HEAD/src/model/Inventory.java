@@ -32,7 +32,7 @@ public class Inventory {
      *************************************************************************************
      */
 
-    public static int getNumberOfItemsInInventory(String data) { //string because from user input
+    public static int searchNumberOfItemsInInventory(String data) { //string because from user input
         if (itemsQty.size() > 0) {
             for (Map.Entry<String, String> entry : itemsQty.entrySet()) {
 
@@ -48,7 +48,7 @@ public class Inventory {
     }
 
 
-    public static void loadFiles() throws IOException {
+    public static void loadInventory() throws IOException {
 
         //loads the file from application directory
         FileInputStream reader = new FileInputStream(file);

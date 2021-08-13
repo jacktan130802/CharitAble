@@ -67,7 +67,7 @@ public class User {//for methods of altering the inventory.
 			throw new InvalidUserException("Invalid username. Not in form abc123");
 		}
 		if (donor.isAnonymous() == true) {
-			user= "XXX" + " - " +  donor.genID();
+			user= "XXX" + " - " +  donor.genRandomID();
 		}
 
 

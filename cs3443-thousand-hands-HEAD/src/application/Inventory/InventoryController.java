@@ -156,7 +156,7 @@ public class InventoryController {
     	String data = itemSearch.getText();
     	
     	//Checks if item is in inventory
-    	int amount = Inventory.getNumberOfItemsInInventory(data);
+    	int amount = Inventory.searchNumberOfItemsInInventory(data);
     	if (amount > 0) {
     		data += " (x" + amount + ")";
     		Inventory.obsInventory.add(data);
