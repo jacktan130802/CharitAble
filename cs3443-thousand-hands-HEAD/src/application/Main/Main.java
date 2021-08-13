@@ -1,9 +1,3 @@
-
-/*
- *	jie134 - Ryan Gill
- *	CS-3443-003
- *	Dr. Rathore
- */
 package application.Main;
 	
 import java.io.IOException;
