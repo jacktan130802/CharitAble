@@ -3,80 +3,80 @@
 
 /* Main.fxml elements */
 #mainHomeBtn{
-	-fx-background-image:url("../img/HomeIcon.png");
+	-fx-background-image:url("img/HomeIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #inventoryBtn{
-	-fx-background-image:url("../img/InventoryIcon.png");
+	-fx-background-image:url("img/InventoryIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #needBtn{
-	-fx-background-image:url("../img/NeedIcon.png");
+	-fx-background-image:url("img/NeedIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #giveBtn{
-	-fx-background-image:url("../img/GiveIcon.png");
+	-fx-background-image:url("img/GiveIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #aboutBtn{
-	-fx-background-image:url("../img/HandIcon.jpg");
+	-fx-background-image:url("img/HandIcon.jpg");
 	-fx-background-size:100% 100%;
 }
 
 /* NeedGive.fxml elements */
 #needHomeBtn{
-	-fx-background-image:url("../img/HomeIcon.png");
+	-fx-background-image:url("img/HomeIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #needInvBtn{
-	-fx-background-image:url("../img/InventoryIcon.png");
+	-fx-background-image:url("img/InventoryIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #userBtn{
-	-fx-background-image:url("../img/UserIcon.jpg");
+	-fx-background-image:url("img/UserIcon.jpg");
 	-fx-background-size:100% 100%;
 }
 
 #productBtn{
-	-fx-background-image:url("../img/CartIcon.png");
+	-fx-background-image:url("img/CartIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #quantityBtn{
-	-fx-background-image:url("../img/QuantityIcon.png");
+	-fx-background-image:url("img/QuantityIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #addSubBtn{
-	-fx-background-image:url("../img/AddSubIcon.png");
+	-fx-background-image:url("img/AddSubIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 /* Inventory.fxml elements */
 
 #invHomeBtn{
-	-fx-background-image:url("../img/HomeIcon.png");
+	-fx-background-image:url("img/HomeIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #invInventoryBtn{
-	-fx-background-image:url("../img/InventoryIcon.png");
+	-fx-background-image:url("img/InventoryIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #searchBtn{
-	-fx-background-image:url("../img/SearchIcon.png");
+	-fx-background-image:url("img/SearchIcon.png");
 	-fx-background-size:100% 100%;
 }
 
 #showAllBtn{
-	-fx-background-image:url("../img/QuantityIcon.png");
+	-fx-background-image:url("img/QuantityIcon.png");
 	-fx-background-size:100% 100%;
 }
 
