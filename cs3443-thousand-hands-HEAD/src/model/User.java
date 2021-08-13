@@ -66,14 +66,14 @@ public class User {//for methods of altering the inventory.
 		if (!VerifyUser.verifyUser(user)) {
 			throw new InvalidUserException("Invalid username. Not in form abc123");
 		}
+		if (donor.isAnonymous() == true) {
+			user= "XXX" + " - " +  donor.genID();
+		}
+
 
 		if (!users.containsKey(user)) {
 		//Add user
 		FileOutputStream writer = new FileOutputStream(userFile, true);
-			//users.put(user, "user");
-		if (donor.isAnonymous() == true) {
-			users.put("XXX", position);
-		} else
 			users.put(user, position);
 		User.userProp.putAll(User.users);
 		User.userProp.store(writer, user);
@@ -102,7 +102,7 @@ public class User {//for methods of altering the inventory.
 	 *********************************************
 	 */
 
-	public static void loadUser() throws IOException {
+ 	public static void loadUser() throws IOException {
 
 		//loads the file from application directory
 		FileInputStream userReader = new FileInputStream(userFile);

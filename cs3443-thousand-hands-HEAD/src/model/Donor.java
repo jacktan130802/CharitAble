@@ -2,12 +2,19 @@ package model;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.*;
 
 public class Donor extends User {
 private boolean anonymous;
-//    public Donor(String Name, String Donated, String qty) {
-//
-//
+private int id ;
+
+
+
+    public int genID(){
+
+       id =(int) (Math.random()*((1000-100)+1))+100;
+       return id;
+    }
 
     public boolean isAnonymous() {
         return anonymous;
@@ -68,6 +75,7 @@ private boolean anonymous;
         }
 
     }
+
 
 
 
