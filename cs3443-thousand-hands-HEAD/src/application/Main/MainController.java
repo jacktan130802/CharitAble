@@ -209,7 +209,7 @@ public class MainController  {
 		//Instantiates an alert object and sets its text
 		Alert a = new Alert(AlertType.INFORMATION);
 		String output = "CharitAble is an application that helps those in need during the COVID-19 pandemic. ";
-		output += "Offer a donation using the Give Button, or press the Need Button if you require supplies.\nThank you for donating:\n\n";
+		output += "Offer a donation using the Give Button, or press the Need Button if you require supplies.\nThank you for donating:\n\nHonor Donors Board : \n\n";
 		int i = 0;
 		for (Entry<String, String> entry : User.users.entrySet()) {
 			if (i < 5)
