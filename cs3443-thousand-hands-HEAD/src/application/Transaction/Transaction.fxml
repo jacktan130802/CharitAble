@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="transactionMainpane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Transaction.TransactionController">
    <children>
-       <Button fx:id="mainHomeBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#transactiontoMain" prefHeight="100.0" prefWidth="101.0" stylesheets="@../../../bin/application/application.css">
+       <Button fx:id="mainHomeBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#transactiontoMain" prefHeight="100.0" prefWidth="101.0" stylesheets="/application.css">
            <tooltip>
                <Tooltip text="Home" />
            </tooltip>

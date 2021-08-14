@@ -1,5 +1,3 @@
-package application.Main;
-	
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -22,7 +20,7 @@ public class Main extends Application {
 			window.setResizable(false); // Dont allow expand
 			Inventory.loadInventory();    //loads the saved data.properties file
 			User.loadUser();        //loads the user.properties file
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Main.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("./application/Main/Main.fxml"));
 			Scene scene = new Scene(root,600,600);
 			scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
 			primaryStage.setScene(scene);

@@ -9,21 +9,21 @@
 
 <AnchorPane fx:id="root" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main.MainController">
    <children>
-      <AnchorPane fx:id="homeAnchor" prefHeight="600.0" prefWidth="600.0" stylesheets="@../../../bin/application/application.css">
+      <AnchorPane fx:id="homeAnchor" prefHeight="600.0" prefWidth="600.0" stylesheets="/application.css">
          <children>
-            <Button fx:id="needBtn" layoutX="37.0" layoutY="245.0" mnemonicParsing="false" onAction="#mainToNeed" prefHeight="250.0" prefWidth="249.0" stylesheets="@../../../bin/application/application.css">
+            <Button fx:id="needBtn" layoutX="37.0" layoutY="245.0" mnemonicParsing="false" onAction="#mainToNeed" prefHeight="250.0" prefWidth="249.0" stylesheets="/application.css">
                <tooltip>
                   <Tooltip text="Need" />
                </tooltip></Button>
-            <Button fx:id="giveBtn" layoutX="318.0" layoutY="245.0" mnemonicParsing="false" onAction="#mainToGive" prefHeight="250.0" prefWidth="249.0" stylesheets="@../../../bin/application/application.css">
+            <Button fx:id="giveBtn" layoutX="318.0" layoutY="245.0" mnemonicParsing="false" onAction="#mainToGive" prefHeight="250.0" prefWidth="249.0" stylesheets="/application.css">
                <tooltip>
                   <Tooltip text="Give" />
                </tooltip></Button>
-            <Button fx:id="inventoryBtn" layoutX="129.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainToInventory" prefHeight="100.0" prefWidth="111.0" stylesheets="@../../../bin/application/application.css">
+            <Button fx:id="inventoryBtn" layoutX="129.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainToInventory" prefHeight="100.0" prefWidth="111.0" stylesheets="/application.css">
                <tooltip>
                   <Tooltip text="Inventory" />
                </tooltip></Button>
-            <Button fx:id="mainHomeBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="101.0" stylesheets="@../../../bin/application/application.css">
+            <Button fx:id="mainHomeBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="101.0" stylesheets="/application.css">
                <tooltip>
                   <Tooltip text="Home" />
                </tooltip>
